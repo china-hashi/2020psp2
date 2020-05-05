@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 extern double p_stdnorm(double z);
@@ -12,6 +13,9 @@ int main(void)
     char buf[256];
     FILE* fp;
     double L1=1,L2=1;
+    double mu_a=170.8,sigma_a=5.43;
+    double mu_b=169.7,sigma_b=5.5;
+    double y_a,y_b;
 
     printf("input the filename of sample:");
     fgets(fname,sizeof(fname),stdin);
@@ -26,12 +30,10 @@ int main(void)
 
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
-
-
-    
-
-
-
+        y_a=(val-mu_a)/sigma_a;
+        y_b=(val-mu_b)/sigma_b;
+        L1=L1*p_stdnorm(y_a);
+        L2=L2*p_stdnorm(y_b);
     }
 
     if(fclose(fp) == EOF){
@@ -39,12 +41,10 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
-    printf("L_A: %f\n",max_val);
-    printf("L_B: %f\n",min_val);
+    printf("L_A: %f\n",L1);
+    printf("L_B: %f\n",L2);
 
     return 0;
-
-
 }
 
 double p_stdnorm(double z)

@@ -1,6 +1,6 @@
 # 課題2 レポート
 
-aa83988848 薗田光太郎
+bb35319032 橋本千夏
 
 ## 課題
 
@@ -20,12 +20,39 @@ aa83988848 薗田光太郎
 と計算できる．<img src="/k02/tex/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode&sanitize=true" align=middle width=8.270567249999992pt height=14.15524440000002pt/>は仮定した確率密度関数で，<img src="/k02/tex/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode&sanitize=true" align=middle width=8.17352744999999pt height=22.831056599999986pt/>はその母数．<img src="/k02/tex/2ec6e630f199f589a2402fdf3e0289d5.svg?invert_in_darkmode&sanitize=true" align=middle width=8.270567249999992pt height=14.15524440000002pt/>が正規分布なら，<img src="/k02/tex/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode&sanitize=true" align=middle width=8.17352744999999pt height=22.831056599999986pt/>は，平均<img src="/k02/tex/07617f9d8fe48b4a7b3f523d6730eef0.svg?invert_in_darkmode&sanitize=true" align=middle width=9.90492359999999pt height=14.15524440000002pt/>と分散<img src="/k02/tex/e6718aa5499c31af3ff15c3c594a7854.svg?invert_in_darkmode&sanitize=true" align=middle width=16.535428799999988pt height=26.76175259999998pt/>である．
 
 ## ソースコードの説明
+l.21: データファイル名を入力させ，fnameに格納
+
+l.22: 入力させた文字列の最後にエンターキーが入っているので，fnameの文字列の最後をヌル文字'\0'に置換
+
+l.23: fnameを確認
+
+l.25: fnameで指定したファイルの先頭アドレスをファイルポインタ fp に読み込む
+
+l.26: もしfpがNULLだったときは，ファイルを開けなかったので，即座にプログラム終了
+
+l.31: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
+
+l.32: bufからscanfで数値文字列を実数としてvalに読み込む
+
+l.33: valを標準化してy_aに格納
+
+l.34: valを標準化してy_bに格納
+
+l.35: A県生まれの尤度L1を計算
+
+l.36: B県生まれの尤度L2を計算
+
+l.39: ファイルを閉じる．閉じれないときは，即座にプログラム終了．
+
+l.44: 尤度L1を出力
+
+l.45: 尤度L2を出力
 
 ## 入出力結果
 
 ```
-Likelihood for A：
-Likelihood for B：
+Likelihood for A：0.000006
+Likelihood for B：0.000002
 ```
 
 ## 修正履歴
