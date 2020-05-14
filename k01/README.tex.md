@@ -47,51 +47,59 @@ l.19: データファイル名を入力させ，fnameに格納
 
 l.20: 入力させた文字列の最後にエンターキーが入っているので，fnameの文字列の最後をヌル文字'\0'に置換
 
-l.16: fnameを確認
+l.21: fnameを確認
 
-l.18: fnameで指定したファイルの先頭アドレスをファイルポインタ fp に読み込む
+l.23: fnameで指定したファイルの先頭アドレスをファイルポインタ fp に読み込む
 
-l.19: もしfpがNULLだったときは，ファイルを開けなかったので，即座にプログラム終了
+l.24: もしfpがNULLだったときは，ファイルを開けなかったので，即座にプログラム終了
 
-l.29: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
+l.31: ファイルを1行ずつbufに読み込む．もし読み込み成功する限り以下を繰り返す
 
-l.30: bufからscanfで数値文字列を実数としてvalに読み込む
+l.32: bufからscanfで数値文字列を実数としてvalに読み込む
 
-l.31: N-1個の実数の和を計算
+l.33: Nに1を足す
 
-l.32: N-1個の実数の平均をaveに代入
+l.34: iに1を足す
 
-l.33: N-1個の実数の2乗の和を計算
+l.35: 標本平均aveを計算
 
-l.34: N-1個の実数の2乗の平均をsquare_aveに代入
+l.36: 2乗の標本平均square_aveを計算
 
-l.35: bNにvalを代入
+l.37: 標本分散varを計算
 
-l.36: 実数の個数を計算
+l.40: aveを出力
 
-l.39: 関数ave_onlineを実行
+l.41: varを出力
 
-l.40: 関数var_onlineを実行
+l.43: 分散Sを計算
 
-l.42: ファイルを閉じる．閉じれないときは，即座にプログラム終了．
+l.44: 母集団分散Uを計算
 
-l.49: 関数ave_onlineを定義
+l.45: 標準誤差eを計算
 
-l.53: averageを出力
+l.46: 母集団平均を出力
 
-l.56: 関数var_onlineを定義
+l.47: Uを出力
 
-l.60: varianceを出力
+l.49: ファイルを閉じる．閉じれないときは，即座にプログラム終了．
+
+l.56: 関数ave_onlineを定義
+
+l.60: averageを返す
+
+l.63: 関数var_onlineを定義
+
+l.67: varianceを返す
 
 ## 入出力結果
 
 ```
 input the filename of sample:../sample/heights_male.csv
 the filename of sample: ../sample/heights_male.csv
-sample mean：
-sample variance：
-population mean (estimated)：
-population variance (estimated)：
+sample mean：173.89
+sample variance：25.36
+population mean (estimated)：173.89±1.90
+population variance (estimated)：28.98
 ```
 
 ## 修正履歴

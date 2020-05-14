@@ -12,8 +12,8 @@ int main(void)
     char fname[FILENAME_MAX];
     char buf[256];
     FILE* fp;
-    int N=0;
-    double ave,sum=0,sum2=0,bN=0,square_ave;
+    int N=0,i=0;
+    double ave[8],square_ave[8],var,S,U,e;
 
     printf("input the filename of sample:");
     fgets(fname,sizeof(fname),stdin);
@@ -26,18 +26,25 @@ int main(void)
         exit(EXIT_FAILURE);
     }
 
+    ave[0]=0;
+    square_ave[0]=0;
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
-        sum=sum+bN;
-        ave=sum/N;
-        sum2=sum2+pow(bN,2.0);
-        square_ave=sum2/N;
-        bN=val;
         N++;
+        i++;
+        ave[i]=ave_online(val,ave[i-1],N);
+        square_ave[i]=ave_online(pow(val,2.0),square_ave[i-1],N);
+        var=var_online(val,ave[i-1],square_ave[i-1],N);
     }
 
-    ave_online(val,ave,N);
-    var_online(val,ave,square_ave,N);
+    printf("sample mean:%.2f\n",ave[i]);
+    printf("sample variance:%.2f\n",var);
+
+    S=square_ave[i]-pow(ave[i],2.0);
+    U=S*N/(N-1);
+    e=sqrt(U/N);
+    printf("population mean (estimated):%.2f±%.2f\n",ave[i],e);
+    printf("population variance (estimated):%.2f\n",U);
 
     if(fclose(fp) == EOF){
         fputs("file close error\n",stderr);
@@ -46,16 +53,16 @@ int main(void)
     return 0;
 }
 
-double ave_online(double val,double ave,int i)
+double ave_online(double val,double ave,int N)
 {
     double average;
-    average=((i-1)*ave/i)+(val/i);
-    printf("%f\n",average);
+    average=((N-1)*ave/N)+(val/N);
+    return average;
 }
 
-double var_online(double val,double ave,double square_ave,int i)
+double var_online(double val,double ave,double square_ave,int N)
 {
     double variance;
-    variance=((i-1)*square_ave/i)+(pow(val,2.0)/i)-pow(((i-1)*ave/i)+(val/i),2.0);
-    printf("%f\n",variance);
+    variance=((N-1)*square_ave/N)+(pow(val,2.0)/N)-pow(((N-1)*ave/N)+(val/N),2.0);
+    return variance;
 }
