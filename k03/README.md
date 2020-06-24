@@ -67,15 +67,17 @@ int main(int argc, char* argv[])
 
 ## ソースコードの説明
 
-l.24: argv[1]からscanfで数値文字列を実数としてmuに読み込む
+l.24-25: もしargcが4未満なら警告文を出力
 
-l.25: argv[2]からscanfで数値文字列を実数としてsigmaに読み込む
+l.27: argv[1]からscanfで数値文字列を実数としてmuに読み込む
 
-l.26: argv[3]からscanfで数値文字列を実数としてnum_dummyに読み込む
+l.28: argv[2]からscanfで数値文字列を実数としてsigmaに読み込む
 
-l.37: dummyに捏造した値を格納
+l.29: argv[3]からscanfで数値文字列を実数としてnum_dummyに読み込む
 
-l.38: dummyを出力
+l.40: dummyに捏造した値を格納
+
+l.41: dummyを出力
 
 ## 入出力結果
 
