@@ -71,6 +71,8 @@ l.24: argv[1]からscanfで数値文字列を実数としてmuに読み込む
 
 l.25: argv[2]からscanfで数値文字列を実数としてsigmaに読み込む
 
+l.26: argv[3]からscanfで数値文字列を実数としてnum_dummyに読み込む
+
 l.37: dummyに捏造した値を格納
 
 l.38: dummyを出力
